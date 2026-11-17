@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "790892057269",
+    "project_id": "caynst-flutter-app",
+    "storage_bucket": "caynst-flutter-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790892057269:android:eb8d715b7a2074571264fc",
+        "android_client_info": {
+          "package_name": "com.cayn.isabella_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790892057269-3q4sh9jjab8iktknuog3r4euptetd6r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDROe1nKJfbETbuV_SlWjcpuoxuBkxQZ08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790892057269-3q4sh9jjab8iktknuog3r4euptetd6r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:790892057269:android:c350b83732f5a1f61264fc",
+        "android_client_info": {
+          "package_name": "com.example.caynst_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "790892057269-3q4sh9jjab8iktknuog3r4euptetd6r4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDROe1nKJfbETbuV_SlWjcpuoxuBkxQZ08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "790892057269-3q4sh9jjab8iktknuog3r4euptetd6r4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
