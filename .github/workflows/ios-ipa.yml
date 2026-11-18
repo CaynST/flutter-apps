@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - 'camara/isabella_camara/**'
+      - 'camara/saul_camara/**'
+      - 'flutter/caynst_app/**'
+      - 'flutter/isabella_app/**'
       - 'flutter-mapas/maps_and_geolocation/**'
       - '.github/workflows/ios-ipa.yml'
 
@@ -24,6 +27,12 @@ jobs:
         include:
           - name: isabella_camara
             path: camara/isabella_camara
+          - name: saul_camara
+            path: camara/saul_camara
+          - name: caynst_app
+            path: flutter/caynst_app
+          - name: isabella_app
+            path: flutter/isabella_app
           - name: maps_and_geolocation
             path: flutter-mapas/maps_and_geolocation
     steps:
