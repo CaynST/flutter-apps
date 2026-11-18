@@ -18,4 +18,10 @@ flutter pub get
 flutter run
 ```
 
+## IPA de iOS (GitHub Actions)
+
+El workflow `.github/workflows/ios-ipa.yml` compila `camara/isabella_camara` y `flutter-mapas/maps_and_geolocation` en un runner macOS y publica el `.ipa` como artefacto descargable (Actions → run → *Artifacts*). Se lanza al modificar esos dos proyectos o a mano con `workflow_dispatch`.
+
+El `.ipa` sale **sin firmar**, así que iOS no lo instala directamente: hay que re-firmarlo con Sideloadly o AltStore usando un Apple ID gratuito (la app caduca a los 7 días). Para un `.ipa` instalable por cualquiera o para TestFlight hace falta Apple Developer Program y firma con certificado + provisioning profile.
+
 Los artefactos de compilación (`build/`, `.dart_tool/`), las firmas (`*.jks`, `key.properties`) y los binarios (`*.apk`) no se versionan; ver `.gitignore`.

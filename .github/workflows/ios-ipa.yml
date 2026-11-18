@@ -1,0 +1,65 @@
+name: iOS IPA (sin firmar)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'camara/isabella_camara/**'
+      - 'flutter-mapas/maps_and_geolocation/**'
+      - '.github/workflows/ios-ipa.yml'
+
+concurrency:
+  group: ios-ipa-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: IPA · ${{ matrix.name }}
+    runs-on: macos-15
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: isabella_camara
+            path: camara/isabella_camara
+          - name: maps_and_geolocation
+            path: flutter-mapas/maps_and_geolocation
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.47.7
+          channel: stable
+          cache: true
+
+      - name: Dependencias
+        working-directory: ${{ matrix.path }}
+        run: flutter pub get
+
+      - name: Compilar sin firma
+        working-directory: ${{ matrix.path }}
+        run: flutter build ios --release --no-codesign
+
+      - name: Empaquetar .ipa
+        working-directory: ${{ matrix.path }}
+        run: |
+          set -euo pipefail
+          APP=build/ios/iphoneos/Runner.app
+          test -d "$APP"
+          rm -rf Payload "${{ matrix.name }}-unsigned.ipa"
+          mkdir -p Payload
+          cp -R "$APP" Payload/
+          zip -qry "${{ matrix.name }}-unsigned.ipa" Payload
+          rm -rf Payload
+          ls -lh "${{ matrix.name }}-unsigned.ipa"
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.name }}-ipa
+          path: ${{ matrix.path }}/${{ matrix.name }}-unsigned.ipa
+          if-no-files-found: error
+          retention-days: 30
